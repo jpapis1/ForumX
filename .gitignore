@@ -1,3 +1,8 @@
+application.properties
+.DS_Store
+.idea/
+*.iml
+
 # Compiled class file
 *.class
 
