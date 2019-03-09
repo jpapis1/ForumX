@@ -3,6 +3,7 @@ package app.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -19,12 +20,14 @@ public class Client {
 
     private String email;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
 
     @ManyToOne(targetEntity = Status.class)
     @JoinColumn(name = "idStatus")
+    @NotNull
     private Status status;
 
     @JsonIgnore

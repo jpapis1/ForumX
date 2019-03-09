@@ -15,4 +15,8 @@ public class StatusManager {
     public void addStatus(Status status) {
         statusRepository.save(status);
     }
+    public Status getStatus(int id) {
+        return statusRepository.findById(id).get();
+    }
+    public void removeStatus(Status status) {statusRepository.delete(status);}
 }
