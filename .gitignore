@@ -2,6 +2,7 @@ application.properties
 .DS_Store
 .idea/
 *.iml
+target/
 
 # Compiled class file
 *.class
