@@ -1,5 +1,7 @@
 # ForumX
+ForumX is a web service that allows users to write articles/posts, share interesting stories and ideas.
 
+Technologies used : Spring Boot REST API + Angular
 ## REST API (provided by Spring Boot)
 
 The app offers REST API for accessing data.
