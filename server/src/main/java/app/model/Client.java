@@ -1,6 +1,8 @@
 package app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,20 +27,21 @@ public class Client {
 
     private String password;
 
+    @NotNull
     @ManyToOne(targetEntity = Status.class)
     @JoinColumn(name = "idStatus")
-    @NotNull
     private Status status;
 
-    @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(name="Hobbies", joinColumns=@JoinColumn(name="idClient"), inverseJoinColumns=@JoinColumn(name="idHobby"))
-    private Set<Hobby> hobbySet;
+    @JsonIgnoreProperties("clients")
+    private Set<Hobby> hobbies;
 
-    @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(name="Visit", joinColumns=@JoinColumn(name="idClient"), inverseJoinColumns=@JoinColumn(name="idPost"))
-    private Set<Post> visitedPosts;
+    @JsonIgnoreProperties("visitors")
+    private List<Post> visitedPosts;
 
     public Client() { }
 
@@ -98,20 +101,19 @@ public class Client {
         this.status = status;
     }
 
-    public Set<Hobby> getHobbySet() {
-        return hobbySet;
+    public Set<Hobby> getHobbies() {
+        return hobbies;
     }
 
-    public void setHobbySet(Set<Hobby> hobbyList) {
-        this.hobbySet = hobbyList;
+    public void setHobbies(Set<Hobby> hobbies) {
+        this.hobbies = hobbies;
     }
 
-    public Set<Post> getVisitedPosts() {
+    public List<Post> getVisitedPosts() {
         return visitedPosts;
     }
 
-    public void setVisitedPosts(Set<Post> visitedPosts) {
+    public void setVisitedPosts(List<Post> visitedPosts) {
         this.visitedPosts = visitedPosts;
     }
-
 }
