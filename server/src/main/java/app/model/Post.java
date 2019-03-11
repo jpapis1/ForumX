@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,8 @@ public class Post {
 
     private String name;
 
+    //@Column(columnDefinition = "NVARCHAR(MAX)")
+    @Column(length = 10000)
     private String content;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="CET")
@@ -26,11 +29,11 @@ public class Post {
     @NotNull
     @ManyToOne(targetEntity = Client.class)
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties("visitedPosts")
+    @JsonIgnoreProperties({"visitedPosts","favoritePosts"})
     private Client creator;
 
     @ManyToMany(mappedBy = "visitedPosts", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("visitedPosts")
+    @JsonIgnoreProperties({"visitedPosts","favoritePosts"})
     private List<Client> visitors;
 
     public Post() { }

@@ -1,0 +1,13 @@
+<mat-sidenav-container id=fullSize>
+    abcd
+    <mat-sidenav #sidenav [mode]="push" [fixedInViewport]=true [fixedTopGap]=true
+    [fixedBottomGap]=true>
+    <app-posts></app-posts>
+
+  </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+

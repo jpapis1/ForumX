@@ -52,4 +52,9 @@ public class ClientRestController {
         visitManager.addVisitToClient(idClient,idPost);
         return new ResponseEntity<>("Visit has been added to the client.", HttpStatus.CREATED);
     }
+    @RequestMapping(path = "/client/{idClient}/favoritePost/{idPost}",method = RequestMethod.POST)
+    public ResponseEntity<String> addPostToFavorites(@PathVariable("idClient") int idClient,@PathVariable("idPost") int idPost ) {
+        visitManager.addToFavorite(idClient,idPost);
+        return new ResponseEntity<>("Post has been added to favorites", HttpStatus.CREATED);
+    }
 }

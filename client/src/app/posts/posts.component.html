@@ -1,0 +1,28 @@
+      <mat-list role="list">
+
+          <mat-list-item><h2>Posts</h2></mat-list-item>
+                  <mat-list-item role="listitem" *ngFor="let post of posts">
+                      <span><button mat-icon-button (click)="onSelect(post)"
+                        [class.selected]="post === selectedPost">
+                        <mat-icon >forward</mat-icon>
+                        </button></span>
+                    <span>
+                      <button mat-icon-button (click)="onSelect(post)"
+                      [class.selected]="post === selectedPost">
+                      <mat-icon >link_off</mat-icon>
+                      </button>
+                    </span>
+                      <h3 matLine> {{post.name}}</h3>
+                      <p matLine>
+                        <span> Creator: {{post.creator.username}} </span>
+                      </p>
+                    <mat-divider></mat-divider>
+                  </mat-list-item>
+          </mat-list>
+          <button mat-icon-button >
+          <mat-icon >location_off</mat-icon>
+          </button>
+          <label>
+            Selected client: 
+            <input *ngIf="selectedPost" [(ngModel)]="selectedPost.name" placeholder="No choice">
+          </label>

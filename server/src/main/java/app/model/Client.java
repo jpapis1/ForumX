@@ -43,6 +43,10 @@ public class Client {
     @JsonIgnoreProperties("visitors")
     private List<Post> visitedPosts;
 
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("visitors")
+    private Set<Post> favoritePosts;
+
     public Client() { }
 
     public int getIdClient() {
@@ -107,6 +111,14 @@ public class Client {
 
     public void setHobbies(Set<Hobby> hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public Set<Post> getFavoritePosts() {
+        return favoritePosts;
+    }
+
+    public void setFavoritePosts(Set<Post> favoritePosts) {
+        this.favoritePosts = favoritePosts;
     }
 
     public List<Post> getVisitedPosts() {

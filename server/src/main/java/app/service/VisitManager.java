@@ -27,4 +27,10 @@ public class VisitManager {
         client.getVisitedPosts().add(post);
         clientManager.updateClient(client);
     }
+    public void addToFavorite(int idClient, int idPost) {
+        Post post = postManager.getPost(idPost);
+        Client client = clientManager.getClient(idClient);
+        client.getFavoritePosts().add(post);
+        clientManager.updateClient(client);
+    }
 }

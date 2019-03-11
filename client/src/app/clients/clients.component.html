@@ -1,13 +1,30 @@
-<h2>My heroes</h2>
-<ul class="clients">
-  <li *ngFor="let client of clients" (click)="onSelect(client)"
-    [class.selected]="client === selectedClient">
-    
-    <span class="badge">{{client.id}}</span> {{client.username}}
-  </li>
-</ul>
-<label >
-  Selected client: 
-  <input *ngIf="selectedClient" [(ngModel)]="selectedClient.username" placeholder="No choice">
-</label>
-<app-client-detail [client]="selectedClient"></app-client-detail>
+
+      <mat-list role="list">
+
+  <mat-list-item><h2>Users</h2></mat-list-item>
+          <mat-list-item role="listitem" *ngFor="let client of clients">
+              <span><button mat-icon-button (click)="onSelect(client)"
+                [class.selected]="client === selectedClient">
+                <mat-icon >forward</mat-icon>
+                </button></span>
+            <span>
+              <button mat-icon-button (click)="onSelect(client)"
+              [class.selected]="client === selectedClient">
+              <mat-icon >link_off</mat-icon>
+              </button>
+            </span>
+              <h3 matLine> {{client.firstName}} {{client.lastName}} </h3>
+              <p matLine>
+                <span> Creator: {{client.username}} </span>
+              </p>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+  </mat-list>
+  <button mat-icon-button >
+  <mat-icon >location_off</mat-icon>
+  </button>
+  <label>
+    Selected client: 
+    <input *ngIf="selectedClient" [(ngModel)]="selectedClient.username" placeholder="No choice">
+  </label>
+  <app-client-detail [client]="selectedClient"></app-client-detail>

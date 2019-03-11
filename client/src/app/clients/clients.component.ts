@@ -8,16 +8,16 @@ import { ClientService } from '../client.service';
   styleUrls: ['./clients.component.less']
 })
 export class ClientsComponent implements OnInit {
-  clients: Client[];
+  clients: Array<any>;
  // clients = CLIENTS;
   selectedClient : Client;
+  constructor(private clientService: ClientService) { }
   onSelect(client: Client): void {
     this.selectedClient = client;
   }
   getClients(): void {
     this.clientService.getClients().subscribe(clients => this.clients = clients);
   }
-  constructor(private clientService: ClientService) { }
 
   ngOnInit() {
     this.getClients();

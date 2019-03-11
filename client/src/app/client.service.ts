@@ -13,7 +13,6 @@ export class ClientService {
 
   getClients(): Observable<any> {
     this.messageService.add('ClientService: fetched clients')
-    //return of(CLIENTS);
-    return this.http.get('//localhost:8080/all-users');
+    return this.http.get<Client>('http://localhost:8080/api/client');
   }
 }

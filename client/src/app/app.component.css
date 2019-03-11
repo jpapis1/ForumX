@@ -1,0 +1,10 @@
+mat-sidenav-container#fullSize {
+  margin-bottom: 100%;
+  color: blue;
+}
+mat-sidenav-container mat-sidenav-content {
+  height: 100%;
+}
+mat-sidenav-container mat-sidenav {
+  min-width: 30%;
+}
