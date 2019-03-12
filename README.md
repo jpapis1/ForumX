@@ -27,7 +27,7 @@ The app offers REST API for accessing data.
 	"lastName" : "Rosicki",
 	"email" : "johan.smith@myserver.com",
 	"username" : "jerzy",
-	"password" : "abcqd",
+	"password" : "ccb6ede3b0af912ffb9e2f0e620d21fbe11f0c26c4ca6698c8f6780451068396",
 	"status" : {
 		"idStatus" : 3
 	}
